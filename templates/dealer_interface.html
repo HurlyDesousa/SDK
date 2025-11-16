@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dealer Status - Leverex</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .status-item:last-child {
+            border-bottom: none;
+        }
+        
+        .status-label {
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .status-value {
+            font-weight: 700;
+        }
+        
+        .status-connected {
+            color: #10b981;
+        }
+        
+        .status-disconnected {
+            color: #ef4444;
+        }
+        
+        .status-ready {
+            color: #10b981;
+        }
+        
+        .status-not-ready {
+            color: #f59e0b;
+        }
+        
+        .control-button {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .control-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .control-button:active {
+            transform: translateY(0);
+        }
+        
+        .control-button.stopped {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        
+        .price-display-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .price-display {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+        }
+        
+        #leverex-price-display {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        
+        #bitfinex-price-display {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+        
+        .price-label {
+            font-size: 0.5em;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        
+        .offers-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .offers-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        .offers-table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .offers-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .offers-table tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .bids-table .price {
+            color: #10b981;
+            font-weight: 600;
+        }
+        
+        .asks-table .price {
+            color: #ef4444;
+            font-weight: 600;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
+        
+        .error {
+            background: #fee;
+            color: #c33;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .offers-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .status-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Leverex Dealer Status</h1>
+            <p>Real-time price stream and authentication monitoring</p>
+        </div>
+        
+        <div id="error-container"></div>
+        
+        <div style="margin-bottom: 20px;">
+            <h2 style="color: white; text-align: center; margin-bottom: 15px; font-size: 1.8em; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">💰 Price Streams</h2>
+            <p style="color: white; text-align: center; opacity: 0.9; margin-bottom: 20px;">Real-time price updates from Leverex and Bitfinex</p>
+        </div>
+        
+        <div class="price-display-container">
+            <div class="price-display" id="leverex-price-display">
+                <div class="price-label">Leverex Price</div>
+                <div id="leverex-price">--</div>
+            </div>
+            <div class="price-display" id="bitfinex-price-display">
+                <div class="price-label">Bitfinex Price</div>
+                <div id="bitfinex-price">--</div>
+            </div>
+        </div>
+        
+        <div class="status-grid">
+            <div class="card">
+                <h2>🎮 Dealer Control</h2>
+                <div style="text-align: center; padding: 20px;">
+                    <button id="dealer-control-btn" class="control-button" onclick="toggleDealer()">
+                        <span id="control-btn-text">Stop Dealer</span>
+                    </button>
+                    <div style="margin-top: 15px;">
+                        <span class="status-label">Status:</span>
+                        <span class="status-value" id="dealer-running-status">Running</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>🔐 Authentication Status</h2>
+                <div class="status-item">
+                    <span class="status-label">Leverex Connection:</span>
+                    <span class="status-value" id="maker-auth">--</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Leverex Ready:</span>
+                    <span class="status-value" id="maker-ready">--</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Bitfinex Connection:</span>
+                    <span class="status-value" id="taker-auth">--</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Bitfinex Ready:</span>
+                    <span class="status-value" id="taker-ready">--</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Dealer Ready:</span>
+                    <span class="status-value" id="dealer-ready">--</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>📊 Status Details</h2>
+                <div class="status-item">
+                    <span class="status-label">Leverex Status:</span>
+                    <span class="status-value" id="maker-status">--</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Bitfinex Status:</span>
+                    <span class="status-value" id="taker-status">--</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Dealer Status:</span>
+                    <span class="status-value" id="dealer-status">--</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Session Open Price:</span>
+                    <span class="status-value" id="session-price">--</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>💰 Leverex Order Book</h2>
+            <div class="offers-section">
+                <div>
+                    <h3 style="color: #10b981; margin-bottom: 10px;">Bids (Buy Orders)</h3>
+                    <table class="offers-table bids-table">
+                        <thead>
+                            <tr>
+                                <th>Price</th>
+                                <th>Volume</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bids-body">
+                            <tr><td colspan="2" style="text-align: center; padding: 20px;">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <h3 style="color: #ef4444; margin-bottom: 10px;">Asks (Sell Orders)</h3>
+                    <table class="offers-table asks-table">
+                        <thead>
+                            <tr>
+                                <th>Price</th>
+                                <th>Volume</th>
+                            </tr>
+                        </thead>
+                        <tbody id="asks-body">
+                            <tr><td colspan="2" style="text-align: center; padding: 20px;">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function updateStatus(data) {
+            // Update authentication status
+            // Leverex (maker) status
+            const leverexAuth = data.authentication.maker.status;
+            const leverexReady = data.authentication.maker.ready;
+            
+            // Bitfinex (taker) status
+            const bitfinexAuth = data.authentication.taker.status;
+            const bitfinexReady = data.authentication.taker.ready;
+            
+            const dealerReady = data.authentication.dealer.ready;
+            
+            // Update Leverex connection status
+            document.getElementById('maker-auth').textContent = leverexAuth;
+            document.getElementById('maker-auth').className = 'status-value ' + 
+                (leverexAuth === 'Connected' ? 'status-connected' : 'status-disconnected');
+            
+            // Update Bitfinex connection status
+            document.getElementById('taker-auth').textContent = bitfinexAuth;
+            document.getElementById('taker-auth').className = 'status-value ' + 
+                (bitfinexAuth === 'Connected' ? 'status-connected' : 'status-disconnected');
+            
+            // Update Leverex ready status
+            document.getElementById('maker-ready').textContent = leverexReady ? 'Ready' : 'Not Ready';
+            document.getElementById('maker-ready').className = 'status-value ' + 
+                (leverexReady ? 'status-ready' : 'status-not-ready');
+            
+            // Update Bitfinex ready status
+            document.getElementById('taker-ready').textContent = bitfinexReady ? 'Ready' : 'Not Ready';
+            document.getElementById('taker-ready').className = 'status-value ' + 
+                (bitfinexReady ? 'status-ready' : 'status-not-ready');
+            
+            document.getElementById('dealer-ready').textContent = dealerReady ? 'Ready' : 'Not Ready';
+            document.getElementById('dealer-ready').className = 'status-value ' + 
+                (dealerReady ? 'status-ready' : 'status-not-ready');
+            
+            // Update status strings
+            document.getElementById('maker-status').textContent = data.authentication.maker.statusStr || 'N/A';
+            document.getElementById('taker-status').textContent = data.authentication.taker.statusStr || 'N/A';
+            document.getElementById('dealer-status').textContent = data.authentication.dealer.statusStr || 'N/A';
+            
+            // Update prices - separate sections for Leverex and Bitfinex
+            const leverexPrice = data.price.leverex;
+            document.getElementById('leverex-price').textContent = leverexPrice ? 
+                leverexPrice.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : '--';
+            
+            const bitfinexPrice = data.price.bitfinex;
+            document.getElementById('bitfinex-price').textContent = bitfinexPrice ? 
+                bitfinexPrice.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : '--';
+            
+            const sessionPrice = data.price.sessionOpen;
+            document.getElementById('session-price').textContent = sessionPrice ? 
+                sessionPrice.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : '--';
+            
+            // Update order book
+            const bidsBody = document.getElementById('bids-body');
+            const asksBody = document.getElementById('asks-body');
+            
+            if (data.offers.bids && data.offers.bids.length > 0) {
+                bidsBody.innerHTML = data.offers.bids.map(bid => `
+                    <tr>
+                        <td class="price">${bid.price.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+                        <td>${bid.volume.toLocaleString('en-US', {minimumFractionDigits: 8, maximumFractionDigits: 8})}</td>
+                    </tr>
+                `).join('');
+            } else {
+                bidsBody.innerHTML = '<tr><td colspan="2" style="text-align: center; padding: 20px;">No bids available</td></tr>';
+            }
+            
+            if (data.offers.asks && data.offers.asks.length > 0) {
+                asksBody.innerHTML = data.offers.asks.map(ask => `
+                    <tr>
+                        <td class="price">${ask.price.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+                        <td>${ask.volume.toLocaleString('en-US', {minimumFractionDigits: 8, maximumFractionDigits: 8})}</td>
+                    </tr>
+                `).join('');
+            } else {
+                asksBody.innerHTML = '<tr><td colspan="2" style="text-align: center; padding: 20px;">No asks available</td></tr>';
+            }
+        }
+        
+        function showError(message) {
+            const errorContainer = document.getElementById('error-container');
+            errorContainer.innerHTML = `<div class="error">Error: ${message}</div>`;
+            setTimeout(() => {
+                errorContainer.innerHTML = '';
+            }, 5000);
+        }
+        
+        async function toggleDealer() {
+            const btn = document.getElementById('dealer-control-btn');
+            const btnText = document.getElementById('control-btn-text');
+            const isRunning = btnText.textContent === 'Stop Dealer';
+            const action = isRunning ? 'stop' : 'start';
+            
+            // Disable button during request
+            btn.disabled = true;
+            
+            try {
+                const response = await fetch('/api/control', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ action: action })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    if (action === 'stop') {
+                        btnText.textContent = 'Start Dealer';
+                        btn.classList.add('stopped');
+                        document.getElementById('dealer-running-status').textContent = 'Stopped';
+                        document.getElementById('dealer-running-status').className = 'status-value status-disconnected';
+                    } else {
+                        btnText.textContent = 'Stop Dealer';
+                        btn.classList.remove('stopped');
+                        document.getElementById('dealer-running-status').textContent = 'Running';
+                        document.getElementById('dealer-running-status').className = 'status-value status-connected';
+                    }
+                    showError(data.message || `Dealer ${action}ped successfully`);
+                } else {
+                    showError(data.error || `Failed to ${action} dealer`);
+                }
+            } catch (error) {
+                console.error('Error toggling dealer:', error);
+                showError(`Error: ${error.message}`);
+            } finally {
+                btn.disabled = false;
+            }
+        }
+        
+        async function fetchControlStatus() {
+            try {
+                const response = await fetch('/api/control/status');
+                if (response.ok) {
+                    const data = await response.json();
+                    const btn = document.getElementById('dealer-control-btn');
+                    const btnText = document.getElementById('control-btn-text');
+                    const statusEl = document.getElementById('dealer-running-status');
+                    
+                    if (data.running) {
+                        btnText.textContent = 'Stop Dealer';
+                        btn.classList.remove('stopped');
+                        statusEl.textContent = 'Running';
+                        statusEl.className = 'status-value status-connected';
+                    } else {
+                        btnText.textContent = 'Start Dealer';
+                        btn.classList.add('stopped');
+                        statusEl.textContent = 'Stopped';
+                        statusEl.className = 'status-value status-disconnected';
+                    }
+                }
+            } catch (error) {
+                console.error('Error fetching control status:', error);
+            }
+        }
+        
+        async function fetchStatus() {
+            try {
+                const response = await fetch('/api/status');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                if (data.error) {
+                    showError(data.error);
+                } else {
+                    updateStatus(data);
+                }
+            } catch (error) {
+                showError(error.message);
+                console.error('Error fetching status:', error);
+            }
+        }
+        
+        // Fetch status immediately and then every 1 second
+        fetchStatus();
+        fetchControlStatus();
+        setInterval(fetchStatus, 1000);
+        setInterval(fetchControlStatus, 2000); // Check control status every 2 seconds
+    </script>
+</body>
+</html>
+

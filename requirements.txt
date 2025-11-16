@@ -27,3 +27,5 @@ zope.event==4.5.0
 zope.interface==5.5.2
 pyqrcode
 Pillow
+Flask==2.3.3
+flask-cors==4.0.0

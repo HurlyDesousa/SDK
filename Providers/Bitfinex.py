@@ -509,8 +509,7 @@ class BitfinexProvider(Factory):
          'product',
          'collateral_pct',
          'max_collateral_deviation',
-         'deposit_method',
-         'exposure_cooldown'
+         'deposit_method'
       ],
       'hedger': [
          'max_offer_volume'
@@ -551,8 +550,9 @@ class BitfinexProvider(Factory):
 
       # setup Bitfinex connection
       self.order_book = AggregationOrderBook()
+      exposure_cooldown = self.config.get('exposure_cooldown', 1000)  # Default to 1000ms if not specified
       self.expManager = BfxExposureManagement(
-         self, self.config['exposure_cooldown'])
+         self, exposure_cooldown)
 
    def setup(self, callback):
       super().setup(callback)

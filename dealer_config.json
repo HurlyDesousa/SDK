@@ -1,15 +1,15 @@
 {
     "leverex" :
     {
-       "api_endpoint" : "wss://api-dev.leverex.io",
-       "login_endpoint" : "wss://login-dev.leverex.io/ws/v1/websocket",
+       "api_endpoint" : "wss://api.leverex.io",
+       "login_endpoint" : "wss://login.leverex.io/ws/v1/websocket",
        "key_file_path" : "key.pem",
        "product" : "xbtusd_rf"
     },
     "bitfinex" :
     {
-       "api_key" : "****",
-       "api_secret" : "****",
+       "api_key" : "5df9d8f8d5b5f8fc959be7aa7e591b36138776fe485",
+       "api_secret" : "c815a51debfcfd12396ef2f6481824887a3626ff65d",
        "log_level" : "WARN",
        "order_book_len" : 100,
        "order_book_aggregation" : "P0",
@@ -34,3 +34,4 @@
     },
     "log_level" : "LOG"
 }
+
