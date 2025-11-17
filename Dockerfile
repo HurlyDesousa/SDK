@@ -14,4 +14,5 @@ RUN pip install -r requirements.txt
 EXPOSE 5000
 
 # Use sample config for testing, override with --config in docker run
+# Add restart policy handling - container will restart automatically
 CMD ["python3", "-u", "-m", "dealer", "--config", "config.json", "--local"]

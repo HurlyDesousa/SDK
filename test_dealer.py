@@ -1,17 +1,17 @@
 import json
 import traceback
-from Providers.Bitfinex import BitfinexProvider
+from Providers.BitMEX import BitMEXProvider
 
 with open('/app/config.json') as f:
     c = json.load(f)
 
 print('Config loaded successfully')
-print('Bitfinex section:', 'bitfinex' in c)
-print('exposure_cooldown in bitfinex:', 'exposure_cooldown' in c.get('bitfinex', {}))
+print('BitMEX section:', 'bitmex' in c)
+print('Product:', c.get('bitmex', {}).get('product', 'N/A'))
 
 try:
-    print('Creating BitfinexProvider...')
-    provider = BitfinexProvider(c)
+    print('Creating BitMEXProvider...')
+    provider = BitMEXProvider(c)
     print('Success!')
 except Exception as e:
     print('Error:', str(e))

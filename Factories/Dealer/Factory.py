@@ -144,6 +144,9 @@ class DealerFactory(object):
          return f"{self.maker.name} is not ready"
       if not self.hedger.isReady():
          return f"{self.hedger.name} is not ready"
+      
+      # All components are ready
+      return f"All systems ready - {self.maker.name} & {self.taker.name} connected"
 
    ## collateral ##
    async def onCollateralEvent(self):

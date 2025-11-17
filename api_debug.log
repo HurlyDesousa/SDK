@@ -1,0 +1,310 @@
+[2025-11-17 03:20:13,460] [DEBUG   ] [asyncio] Using selector: EpollSelector
+[2025-11-17 03:20:26,190] [DEBUG   ] [asyncio] Using selector: EpollSelector
+[2025-11-17 03:20:26,376] [DEBUG   ] [websockets.client] = connection is CONNECTING
+[2025-11-17 03:20:26,531] [DEBUG   ] [websockets.client] > GET / HTTP/1.1
+[2025-11-17 03:20:26,531] [DEBUG   ] [websockets.client] > Host: api.leverex.io
+[2025-11-17 03:20:26,532] [DEBUG   ] [websockets.client] > Upgrade: websocket
+[2025-11-17 03:20:26,532] [DEBUG   ] [websockets.client] > Connection: Upgrade
+[2025-11-17 03:20:26,533] [DEBUG   ] [websockets.client] > Sec-WebSocket-Key: C4OjhK37v/Kibg6WkqY56A==
+[2025-11-17 03:20:26,533] [DEBUG   ] [websockets.client] > Sec-WebSocket-Version: 13
+[2025-11-17 03:20:26,533] [DEBUG   ] [websockets.client] > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+[2025-11-17 03:20:26,533] [DEBUG   ] [websockets.client] > User-Agent: Python/3.11 websockets/15.0.1
+[2025-11-17 03:20:27,029] [DEBUG   ] [websockets.client] < HTTP/1.1 101 Switching Protocols
+[2025-11-17 03:20:27,029] [DEBUG   ] [websockets.client] < Date: Mon, 17 Nov 2025 03:20:27 GMT
+[2025-11-17 03:20:27,029] [DEBUG   ] [websockets.client] < Connection: upgrade
+[2025-11-17 03:20:27,030] [DEBUG   ] [websockets.client] < Upgrade: WebSocket
+[2025-11-17 03:20:27,030] [DEBUG   ] [websockets.client] < Sec-WebSocket-Accept: 0nnnhOz/gJ45AumXymPLl0wxCkM=
+[2025-11-17 03:20:27,030] [DEBUG   ] [websockets.client] < X-Kong-Upstream-Latency: 2
+[2025-11-17 03:20:27,031] [DEBUG   ] [websockets.client] < X-Kong-Proxy-Latency: 0
+[2025-11-17 03:20:27,031] [DEBUG   ] [websockets.client] < Via: kong/3.3.0
+[2025-11-17 03:20:27,031] [DEBUG   ] [websockets.client] < cf-cache-status: DYNAMIC
+[2025-11-17 03:20:27,032] [DEBUG   ] [websockets.client] < Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=8VRpsMJ4379gCU9pgv9xwi%2FRe2G0by7AYPS8sI1i2ZR8LpX97mZlbVa5X5HjiJHBYlG%2F1b72vDRzZhehAAHCd8g68P1RiUTKyOAY6dcWPBYU7qNbcQrlWZuQLZSkjZrv7g%3D%3D"}],"group":"cf-nel","max_age":604800}
+[2025-11-17 03:20:27,032] [DEBUG   ] [websockets.client] < NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+[2025-11-17 03:20:27,032] [DEBUG   ] [websockets.client] < Server: cloudflare
+[2025-11-17 03:20:27,032] [DEBUG   ] [websockets.client] < CF-RAY: 99fc179e8dee7461-MIA
+[2025-11-17 03:20:27,032] [DEBUG   ] [websockets.client] < alt-svc: h3=":443"; ma=86400
+[2025-11-17 03:20:27,033] [DEBUG   ] [websockets.client] < server-timing: cfL4;desc="?proto=TCP&rtt=96001&min_rtt=95973&rtt_var=36046&sent=4&recv=6&lost=0&retrans=0&sent_bytes=2823&recv_bytes=885&delivery_rate=30354&cwnd=251&unsent_bytes=0&cid=a69170e103358ca3&ts=503&x=0"
+[2025-11-17 03:20:27,033] [DEBUG   ] [websockets.client] = connection is OPEN
+[2025-11-17 03:20:32,039] [DEBUG   ] [websockets.client] > CLOSE 1000 (OK) [2 bytes]
+[2025-11-17 03:20:32,039] [DEBUG   ] [websockets.client] = connection is CLOSING
+[2025-11-17 03:20:32,262] [DEBUG   ] [websockets.client] < CLOSE 1000 (OK) [2 bytes]
+[2025-11-17 03:20:32,262] [DEBUG   ] [websockets.client] < EOF
+[2025-11-17 03:20:32,263] [DEBUG   ] [websockets.client] > EOF
+[2025-11-17 03:20:32,263] [DEBUG   ] [websockets.client] = connection is CLOSED
+[2025-11-17 03:20:32,263] [DEBUG   ] [websockets.client] x closing TCP connection
+[2025-11-17 03:20:32,357] [DEBUG   ] [websockets.client] = connection is CONNECTING
+[2025-11-17 03:20:32,480] [DEBUG   ] [websockets.client] > GET /ws/v1/websocket HTTP/1.1
+[2025-11-17 03:20:32,482] [DEBUG   ] [websockets.client] > Host: login.leverex.io
+[2025-11-17 03:20:32,482] [DEBUG   ] [websockets.client] > Upgrade: websocket
+[2025-11-17 03:20:32,483] [DEBUG   ] [websockets.client] > Connection: Upgrade
+[2025-11-17 03:20:32,483] [DEBUG   ] [websockets.client] > Sec-WebSocket-Key: rpQvsgSQdeO3bwYbptnXVw==
+[2025-11-17 03:20:32,483] [DEBUG   ] [websockets.client] > Sec-WebSocket-Version: 13
+[2025-11-17 03:20:32,483] [DEBUG   ] [websockets.client] > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+[2025-11-17 03:20:32,484] [DEBUG   ] [websockets.client] > User-Agent: Python/3.11 websockets/15.0.1
+[2025-11-17 03:20:32,969] [DEBUG   ] [websockets.client] < HTTP/1.1 101 Switching Protocols
+[2025-11-17 03:20:32,970] [DEBUG   ] [websockets.client] < Date: Mon, 17 Nov 2025 03:20:32 GMT
+[2025-11-17 03:20:32,970] [DEBUG   ] [websockets.client] < Connection: upgrade
+[2025-11-17 03:20:32,971] [DEBUG   ] [websockets.client] < Upgrade: websocket
+[2025-11-17 03:20:32,971] [DEBUG   ] [websockets.client] < Sec-Websocket-Accept: +9YzO9fbPE+QH3UOvKssYF2cu/M=
+[2025-11-17 03:20:32,971] [DEBUG   ] [websockets.client] < vary: Origin
+[2025-11-17 03:20:32,971] [DEBUG   ] [websockets.client] < Access-Control-Allow-Credentials: true
+[2025-11-17 03:20:32,972] [DEBUG   ] [websockets.client] < X-Kong-Upstream-Latency: 4
+[2025-11-17 03:20:32,972] [DEBUG   ] [websockets.client] < X-Kong-Proxy-Latency: 1
+[2025-11-17 03:20:32,972] [DEBUG   ] [websockets.client] < Via: kong/3.3.0
+[2025-11-17 03:20:32,973] [DEBUG   ] [websockets.client] < cf-cache-status: DYNAMIC
+[2025-11-17 03:20:32,973] [DEBUG   ] [websockets.client] < Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=aHX7DGUoPQUe%2BbcZ9Lu76wzG%2BPvr5FdwGMKe%2FSKio6tpqMSXOp7eXiiHoZi9oYQ4vgWKq51%2FXvmlLsGdSpMi978SwTPv%2B7cd6Vrhvk85u9Kw6J%2FGS6C5NY3jwI44GoEg4uwv"}],"group":"cf-nel","max_age":604800}
+[2025-11-17 03:20:32,973] [DEBUG   ] [websockets.client] < NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+[2025-11-17 03:20:32,973] [DEBUG   ] [websockets.client] < Server: cloudflare
+[2025-11-17 03:20:32,974] [DEBUG   ] [websockets.client] < CF-RAY: 99fc17c399bcdaf5-MIA
+[2025-11-17 03:20:32,974] [DEBUG   ] [websockets.client] < alt-svc: h3=":443"; ma=86400
+[2025-11-17 03:20:32,974] [DEBUG   ] [websockets.client] < server-timing: cfL4;desc="?proto=TCP&rtt=84464&min_rtt=84031&rtt_var=32379&sent=4&recv=6&lost=0&retrans=0&sent_bytes=2824&recv_bytes=902&delivery_rate=33370&cwnd=251&unsent_bytes=0&cid=7a813754aa044d3c&ts=500&x=0"
+[2025-11-17 03:20:32,974] [DEBUG   ] [websockets.client] = connection is OPEN
+[2025-11-17 03:20:37,980] [DEBUG   ] [websockets.client] > CLOSE 1000 (OK) [2 bytes]
+[2025-11-17 03:20:37,981] [DEBUG   ] [websockets.client] = connection is CLOSING
+[2025-11-17 03:20:38,219] [DEBUG   ] [websockets.client] < CLOSE 1000 (OK) [2 bytes]
+[2025-11-17 03:20:38,220] [DEBUG   ] [websockets.client] < EOF
+[2025-11-17 03:20:38,221] [DEBUG   ] [websockets.client] > EOF
+[2025-11-17 03:20:38,221] [DEBUG   ] [websockets.client] = connection is CLOSED
+[2025-11-17 03:20:38,222] [DEBUG   ] [websockets.client] x closing TCP connection
+[2025-11-17 03:20:38,261] [DEBUG   ] [websockets.client] = connection is CONNECTING
+[2025-11-17 03:20:38,326] [DEBUG   ] [websockets.client] > GET /realtime HTTP/1.1
+[2025-11-17 03:20:38,327] [DEBUG   ] [websockets.client] > Host: www.bitmex.com
+[2025-11-17 03:20:38,327] [DEBUG   ] [websockets.client] > Upgrade: websocket
+[2025-11-17 03:20:38,327] [DEBUG   ] [websockets.client] > Connection: Upgrade
+[2025-11-17 03:20:38,327] [DEBUG   ] [websockets.client] > Sec-WebSocket-Key: 7oJPqZ00R1/Alng3CfBfTg==
+[2025-11-17 03:20:38,328] [DEBUG   ] [websockets.client] > Sec-WebSocket-Version: 13
+[2025-11-17 03:20:38,328] [DEBUG   ] [websockets.client] > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+[2025-11-17 03:20:38,328] [DEBUG   ] [websockets.client] > User-Agent: Python/3.11 websockets/15.0.1
+[2025-11-17 03:20:39,245] [DEBUG   ] [websockets.client] < HTTP/1.1 101 Switching Protocols
+[2025-11-17 03:20:39,246] [DEBUG   ] [websockets.client] < Date: Mon, 17 Nov 2025 03:20:39 GMT
+[2025-11-17 03:20:39,246] [DEBUG   ] [websockets.client] < Connection: upgrade
+[2025-11-17 03:20:39,246] [DEBUG   ] [websockets.client] < upgrade: websocket
+[2025-11-17 03:20:39,247] [DEBUG   ] [websockets.client] < sec-websocket-accept: nj4n65vTeDN0gWD4tgtQgONnk9c=
+[2025-11-17 03:20:39,247] [DEBUG   ] [websockets.client] < sec-websocket-extensions: permessage-deflate
+[2025-11-17 03:20:39,247] [DEBUG   ] [websockets.client] < cf-cache-status: DYNAMIC
+[2025-11-17 03:20:39,248] [DEBUG   ] [websockets.client] < Set-Cookie: __cf_bm=.18.oL5sBxJ5kdSKgZk.31hT7HTEBn26QzNZzR3gJqc-1763349639-1.0.1.1-YADl0zS3LN.Ov_aWqEF_DZeMqmg22jMxmhGBAgqoP3ZqGJRoKjcvrHTzeOZ4gVuBtJ_Bwm8nchts5a1jjhgWMmttOnYyPqBx8INgzNS92fo; path=/; expires=Mon, 17-Nov-25 03:50:39 GMT; domain=.bitmex.com; HttpOnly; Secure; SameSite=None
+[2025-11-17 03:20:39,248] [DEBUG   ] [websockets.client] < Server: cloudflare
+[2025-11-17 03:20:39,248] [DEBUG   ] [websockets.client] < CF-RAY: 99fc17e8e843b6ec-BOG
+[2025-11-17 03:20:39,248] [DEBUG   ] [websockets.client] < alt-svc: h3=":443"; ma=86400
+[2025-11-17 03:20:39,249] [DEBUG   ] [websockets.client] = connection is OPEN
+[2025-11-17 03:20:39,249] [DEBUG   ] [websockets.client] < TEXT '{"info":"Welcome to the BitMEX Realtime API.","...dler-6f6b457b59-7l8xx"}' [240 bytes]
+[2025-11-17 03:20:39,250] [DEBUG   ] [websockets.client] > TEXT '{"op": "authKey", "args": ["HEaZlXVB7IRGgIqjOF_...0152b9949ecc6b56f1c5"]}' [135 bytes]
+[2025-11-17 03:20:39,649] [DEBUG   ] [websockets.client] < TEXT '{"success":true,"request":{"op":"authKey","args...152b9949ecc6b56f1c5"]}}' [157 bytes]
+[2025-11-17 03:20:39,649] [DEBUG   ] [websockets.client] > TEXT '{"op": "subscribe", "args": ["quote:XBTUSD"]}' [45 bytes]
+[2025-11-17 03:20:39,921] [DEBUG   ] [websockets.client] < TEXT '{"success":true,"subscribe":"quote:XBTUSD","req...rgs":["quote:XBTUSD"]}}' [96 bytes]
+[2025-11-17 03:20:39,927] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"partial","keys":[],"...43.4,"askSize":85200}]}' [336 bytes]
+[2025-11-17 03:20:40,029] [DEBUG   ] [websockets.client] > CLOSE 1000 (OK) [2 bytes]
+[2025-11-17 03:20:40,030] [DEBUG   ] [websockets.client] = connection is CLOSING
+[2025-11-17 03:20:40,060] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...43.4,"askSize":94100}]}' [172 bytes]
+[2025-11-17 03:20:40,061] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...43.4,"askSize":94100}]}' [171 bytes]
+[2025-11-17 03:20:40,061] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...135.4,"askSize":7900}]}' [170 bytes]
+[2025-11-17 03:20:40,062] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...35.4,"askSize":16100}]}' [171 bytes]
+[2025-11-17 03:20:40,062] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...35.4,"askSize":16100}]}' [172 bytes]
+[2025-11-17 03:20:40,062] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...35.4,"askSize":16100}]}' [173 bytes]
+[2025-11-17 03:20:40,337] [DEBUG   ] [websockets.client] < CLOSE 1000 (OK) [2 bytes]
+[2025-11-17 03:20:42,341] [DEBUG   ] [websockets.client] < EOF
+[2025-11-17 03:20:42,341] [DEBUG   ] [websockets.client] > EOF
+[2025-11-17 03:20:42,342] [DEBUG   ] [websockets.client] = connection is CLOSED
+[2025-11-17 03:20:42,342] [DEBUG   ] [websockets.client] x closing TCP connection
+[2025-11-17 03:21:06,863] [DEBUG   ] [asyncio] Using selector: EpollSelector
+[2025-11-17 03:21:06,982] [DEBUG   ] [websockets.client] = connection is CONNECTING
+[2025-11-17 03:21:07,218] [DEBUG   ] [websockets.client] > GET / HTTP/1.1
+[2025-11-17 03:21:07,219] [DEBUG   ] [websockets.client] > Host: api.leverex.io
+[2025-11-17 03:21:07,219] [DEBUG   ] [websockets.client] > Upgrade: websocket
+[2025-11-17 03:21:07,220] [DEBUG   ] [websockets.client] > Connection: Upgrade
+[2025-11-17 03:21:07,220] [DEBUG   ] [websockets.client] > Sec-WebSocket-Key: jz9Rygvlpe4z8fEk8vzquQ==
+[2025-11-17 03:21:07,221] [DEBUG   ] [websockets.client] > Sec-WebSocket-Version: 13
+[2025-11-17 03:21:07,221] [DEBUG   ] [websockets.client] > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+[2025-11-17 03:21:07,221] [DEBUG   ] [websockets.client] > User-Agent: Python/3.11 websockets/11.0.3
+[2025-11-17 03:21:07,804] [DEBUG   ] [websockets.client] < HTTP/1.1 101 Switching Protocols
+[2025-11-17 03:21:07,805] [DEBUG   ] [websockets.client] < Date: Mon, 17 Nov 2025 03:21:07 GMT
+[2025-11-17 03:21:07,805] [DEBUG   ] [websockets.client] < Connection: upgrade
+[2025-11-17 03:21:07,805] [DEBUG   ] [websockets.client] < Upgrade: WebSocket
+[2025-11-17 03:21:07,805] [DEBUG   ] [websockets.client] < Sec-WebSocket-Accept: FdkjP+h5okg6TS4LIbemlOZ24N0=
+[2025-11-17 03:21:07,805] [DEBUG   ] [websockets.client] < X-Kong-Upstream-Latency: 2
+[2025-11-17 03:21:07,805] [DEBUG   ] [websockets.client] < X-Kong-Proxy-Latency: 1
+[2025-11-17 03:21:07,806] [DEBUG   ] [websockets.client] < Via: kong/3.3.0
+[2025-11-17 03:21:07,806] [DEBUG   ] [websockets.client] < cf-cache-status: DYNAMIC
+[2025-11-17 03:21:07,806] [DEBUG   ] [websockets.client] < Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=ltuh5NkjUp8fqHiIkDIhiTpjn6to365w4qdMM5Fo7sbNhHqscB7mRaK3K55wpo1I8BS50ivPmN17UiWjPUOm2PikRFk88dQS4DY0D4tf39b6hMlEUTGENykGFsrIZtDObw%3D%3D"}],"group":"cf-nel","max_age":604800}
+[2025-11-17 03:21:07,806] [DEBUG   ] [websockets.client] < NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+[2025-11-17 03:21:07,806] [DEBUG   ] [websockets.client] < Server: cloudflare
+[2025-11-17 03:21:07,806] [DEBUG   ] [websockets.client] < CF-RAY: 99fc189d9bd125be-MIA
+[2025-11-17 03:21:07,807] [DEBUG   ] [websockets.client] < alt-svc: h3=":443"; ma=86400
+[2025-11-17 03:21:07,807] [DEBUG   ] [websockets.client] < server-timing: cfL4;desc="?proto=TCP&rtt=88619&min_rtt=87981&rtt_var=34270&sent=5&recv=6&lost=0&retrans=0&sent_bytes=2824&recv_bytes=885&delivery_rate=31367&cwnd=251&unsent_bytes=0&cid=2a09d83c15b625a8&ts=598&x=0"
+[2025-11-17 03:21:07,807] [DEBUG   ] [websockets.client] = connection is OPEN
+[2025-11-17 03:21:12,813] [DEBUG   ] [websockets.client] = connection is CLOSING
+[2025-11-17 03:21:12,814] [DEBUG   ] [websockets.client] > CLOSE 1000 (OK) [2 bytes]
+[2025-11-17 03:21:13,024] [DEBUG   ] [websockets.client] < CLOSE 1000 (OK) [2 bytes]
+[2025-11-17 03:21:13,024] [DEBUG   ] [websockets.client] = connection is CLOSED
+[2025-11-17 03:21:13,107] [DEBUG   ] [websockets.client] = connection is CONNECTING
+[2025-11-17 03:21:13,225] [DEBUG   ] [websockets.client] > GET /ws/v1/websocket HTTP/1.1
+[2025-11-17 03:21:13,226] [DEBUG   ] [websockets.client] > Host: login.leverex.io
+[2025-11-17 03:21:13,226] [DEBUG   ] [websockets.client] > Upgrade: websocket
+[2025-11-17 03:21:13,226] [DEBUG   ] [websockets.client] > Connection: Upgrade
+[2025-11-17 03:21:13,226] [DEBUG   ] [websockets.client] > Sec-WebSocket-Key: +GCPVRqBWLWlKrp1IeYoPw==
+[2025-11-17 03:21:13,227] [DEBUG   ] [websockets.client] > Sec-WebSocket-Version: 13
+[2025-11-17 03:21:13,227] [DEBUG   ] [websockets.client] > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+[2025-11-17 03:21:13,227] [DEBUG   ] [websockets.client] > User-Agent: Python/3.11 websockets/11.0.3
+[2025-11-17 03:21:13,692] [DEBUG   ] [websockets.client] < HTTP/1.1 101 Switching Protocols
+[2025-11-17 03:21:13,693] [DEBUG   ] [websockets.client] < Date: Mon, 17 Nov 2025 03:21:13 GMT
+[2025-11-17 03:21:13,693] [DEBUG   ] [websockets.client] < Connection: upgrade
+[2025-11-17 03:21:13,693] [DEBUG   ] [websockets.client] < Upgrade: websocket
+[2025-11-17 03:21:13,693] [DEBUG   ] [websockets.client] < Sec-Websocket-Accept: dfeP5+U94M24EBzxlAKtS33XmS4=
+[2025-11-17 03:21:13,694] [DEBUG   ] [websockets.client] < vary: Origin
+[2025-11-17 03:21:13,694] [DEBUG   ] [websockets.client] < Access-Control-Allow-Credentials: true
+[2025-11-17 03:21:13,694] [DEBUG   ] [websockets.client] < X-Kong-Upstream-Latency: 12
+[2025-11-17 03:21:13,694] [DEBUG   ] [websockets.client] < X-Kong-Proxy-Latency: 1
+[2025-11-17 03:21:13,695] [DEBUG   ] [websockets.client] < Via: kong/3.3.0
+[2025-11-17 03:21:13,695] [DEBUG   ] [websockets.client] < cf-cache-status: DYNAMIC
+[2025-11-17 03:21:13,695] [DEBUG   ] [websockets.client] < Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=7fjOsN5kALCyD9FkyQEzXNgzra0T9Gx1yXm0pi3nitwn7Spx2B59ljgITh7O9cjUM%2FzUUmLEznGPv8y1%2FRh1DYpYDih14xeJWloljlUI58jAwIF7M5NJeKb9pvfOkeck3ZpI"}],"group":"cf-nel","max_age":604800}
+[2025-11-17 03:21:13,695] [DEBUG   ] [websockets.client] < NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+[2025-11-17 03:21:13,696] [DEBUG   ] [websockets.client] < Server: cloudflare
+[2025-11-17 03:21:13,696] [DEBUG   ] [websockets.client] < CF-RAY: 99fc18c248eedae1-MIA
+[2025-11-17 03:21:13,696] [DEBUG   ] [websockets.client] < alt-svc: h3=":443"; ma=86400
+[2025-11-17 03:21:13,696] [DEBUG   ] [websockets.client] < server-timing: cfL4;desc="?proto=TCP&rtt=80213&min_rtt=79660&rtt_var=30979&sent=4&recv=6&lost=0&retrans=0&sent_bytes=2822&recv_bytes=902&delivery_rate=34725&cwnd=251&unsent_bytes=0&cid=a43c1b561c1a6814&ts=457&x=0"
+[2025-11-17 03:21:13,697] [DEBUG   ] [websockets.client] = connection is OPEN
+[2025-11-17 03:21:18,702] [DEBUG   ] [websockets.client] = connection is CLOSING
+[2025-11-17 03:21:18,703] [DEBUG   ] [websockets.client] > CLOSE 1000 (OK) [2 bytes]
+[2025-11-17 03:21:18,899] [DEBUG   ] [websockets.client] < CLOSE 1000 (OK) [2 bytes]
+[2025-11-17 03:21:18,905] [DEBUG   ] [websockets.client] = connection is CLOSED
+[2025-11-17 03:21:18,939] [DEBUG   ] [websockets.client] = connection is CONNECTING
+[2025-11-17 03:21:18,990] [DEBUG   ] [websockets.client] > GET /realtime HTTP/1.1
+[2025-11-17 03:21:18,991] [DEBUG   ] [websockets.client] > Host: www.bitmex.com
+[2025-11-17 03:21:18,991] [DEBUG   ] [websockets.client] > Upgrade: websocket
+[2025-11-17 03:21:18,991] [DEBUG   ] [websockets.client] > Connection: Upgrade
+[2025-11-17 03:21:18,991] [DEBUG   ] [websockets.client] > Sec-WebSocket-Key: IFhYlMhVl7NYIpF+vGhjUQ==
+[2025-11-17 03:21:18,992] [DEBUG   ] [websockets.client] > Sec-WebSocket-Version: 13
+[2025-11-17 03:21:18,992] [DEBUG   ] [websockets.client] > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+[2025-11-17 03:21:18,992] [DEBUG   ] [websockets.client] > User-Agent: Python/3.11 websockets/11.0.3
+[2025-11-17 03:21:19,847] [DEBUG   ] [websockets.client] < HTTP/1.1 101 Switching Protocols
+[2025-11-17 03:21:19,848] [DEBUG   ] [websockets.client] < Date: Mon, 17 Nov 2025 03:21:19 GMT
+[2025-11-17 03:21:19,848] [DEBUG   ] [websockets.client] < Connection: upgrade
+[2025-11-17 03:21:19,848] [DEBUG   ] [websockets.client] < upgrade: websocket
+[2025-11-17 03:21:19,848] [DEBUG   ] [websockets.client] < sec-websocket-accept: 7X1OOPzH4ZxYtrT+hlMs1rZr474=
+[2025-11-17 03:21:19,849] [DEBUG   ] [websockets.client] < sec-websocket-extensions: permessage-deflate
+[2025-11-17 03:21:19,849] [DEBUG   ] [websockets.client] < cf-cache-status: DYNAMIC
+[2025-11-17 03:21:19,849] [DEBUG   ] [websockets.client] < Set-Cookie: __cf_bm=u34VU9lqcMGa2flPe3JP20cTN5ciXkrTjY0NhPSgwms-1763349679-1.0.1.1-g8u1TdFxwWTLqA1QCCf95F4f91bGcJwwg3JNZlaOJig1VunMiT9G4zZ5x8Rp4tk50k.8pHfSgMmaNq53NNWoolmz7EZEYqATqPkAW940ycA; path=/; expires=Mon, 17-Nov-25 03:51:19 GMT; domain=.bitmex.com; HttpOnly; Secure; SameSite=None
+[2025-11-17 03:21:19,849] [DEBUG   ] [websockets.client] < Server: cloudflare
+[2025-11-17 03:21:19,849] [DEBUG   ] [websockets.client] < CF-RAY: 99fc18e638b5b6f7-BOG
+[2025-11-17 03:21:19,850] [DEBUG   ] [websockets.client] < alt-svc: h3=":443"; ma=86400
+[2025-11-17 03:21:19,850] [DEBUG   ] [websockets.client] = connection is OPEN
+[2025-11-17 03:21:19,850] [DEBUG   ] [websockets.client] > TEXT '{"op": "authKey", "args": ["HEaZlXVB7IRGgIqjOF_...7be0902e54d046c43eeb"]}' [135 bytes]
+[2025-11-17 03:21:19,851] [DEBUG   ] [websockets.client] < TEXT '{"info":"Welcome to the BitMEX Realtime API.","...dler-6f6b457b59-g46xz"}' [240 bytes]
+[2025-11-17 03:21:20,123] [DEBUG   ] [websockets.client] < TEXT '{"success":true,"request":{"op":"authKey","args...be0902e54d046c43eeb"]}}' [157 bytes]
+[2025-11-17 03:21:20,125] [DEBUG   ] [websockets.client] > TEXT '{"op": "subscribe", "args": ["quote:XBTUSD"]}' [45 bytes]
+[2025-11-17 03:21:20,388] [DEBUG   ] [websockets.client] < TEXT '{"success":true,"subscribe":"quote:XBTUSD","req...rgs":["quote:XBTUSD"]}}' [96 bytes]
+[2025-11-17 03:21:20,388] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"partial","keys":[],"...31.1,"askSize":16100}]}' [337 bytes]
+[2025-11-17 03:21:20,489] [DEBUG   ] [websockets.client] = connection is CLOSING
+[2025-11-17 03:21:20,490] [DEBUG   ] [websockets.client] > CLOSE 1000 (OK) [2 bytes]
+[2025-11-17 03:21:20,560] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...131.1,"askSize":8200}]}' [172 bytes]
+[2025-11-17 03:21:20,563] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...136.7,"askSize":1000}]}' [172 bytes]
+[2025-11-17 03:21:20,568] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...136.7,"askSize":1000}]}' [171 bytes]
+[2025-11-17 03:21:20,568] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...36.6,"askSize":65300}]}' [172 bytes]
+[2025-11-17 03:21:20,572] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...36.6,"askSize":73200}]}' [172 bytes]
+[2025-11-17 03:21:20,572] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...36.6,"askSize":81400}]}' [172 bytes]
+[2025-11-17 03:21:20,596] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...36.6,"askSize":81400}]}' [172 bytes]
+[2025-11-17 03:21:20,596] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...36.6,"askSize":81400}]}' [172 bytes]
+[2025-11-17 03:21:20,596] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...136.5,"askSize":7900}]}' [171 bytes]
+[2025-11-17 03:21:20,597] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...36.5,"askSize":16100}]}' [172 bytes]
+[2025-11-17 03:21:20,604] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...36.5,"askSize":16400}]}' [172 bytes]
+[2025-11-17 03:21:20,607] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...36.5,"askSize":16400}]}' [171 bytes]
+[2025-11-17 03:21:20,611] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...136.4,"askSize":7900}]}' [170 bytes]
+[2025-11-17 03:21:20,611] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...36.4,"askSize":16100}]}' [171 bytes]
+[2025-11-17 03:21:20,615] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...36.4,"askSize":16100}]}' [172 bytes]
+[2025-11-17 03:21:20,655] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...36.4,"askSize":16400}]}' [172 bytes]
+[2025-11-17 03:21:20,752] [DEBUG   ] [websockets.client] < CLOSE 1000 (OK) [2 bytes]
+[2025-11-17 03:21:22,764] [DEBUG   ] [websockets.client] = connection is CLOSED
+[2025-11-17 03:21:54,920] [DEBUG   ] [asyncio] Using selector: EpollSelector
+[2025-11-17 03:21:55,135] [DEBUG   ] [websockets.client] = connection is CONNECTING
+[2025-11-17 03:21:55,498] [DEBUG   ] [websockets.client] > GET / HTTP/1.1
+[2025-11-17 03:21:55,498] [DEBUG   ] [websockets.client] > Host: api.leverex.io
+[2025-11-17 03:21:55,499] [DEBUG   ] [websockets.client] > Upgrade: websocket
+[2025-11-17 03:21:55,499] [DEBUG   ] [websockets.client] > Connection: Upgrade
+[2025-11-17 03:21:55,499] [DEBUG   ] [websockets.client] > Sec-WebSocket-Key: IlqIc95y4dX8h2t/CjItZQ==
+[2025-11-17 03:21:55,500] [DEBUG   ] [websockets.client] > Sec-WebSocket-Version: 13
+[2025-11-17 03:21:55,500] [DEBUG   ] [websockets.client] > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+[2025-11-17 03:21:55,500] [DEBUG   ] [websockets.client] > User-Agent: Python/3.11 websockets/11.0.3
+[2025-11-17 03:21:56,023] [DEBUG   ] [websockets.client] < HTTP/1.1 101 Switching Protocols
+[2025-11-17 03:21:56,024] [DEBUG   ] [websockets.client] < Date: Mon, 17 Nov 2025 03:21:56 GMT
+[2025-11-17 03:21:56,024] [DEBUG   ] [websockets.client] < Connection: upgrade
+[2025-11-17 03:21:56,025] [DEBUG   ] [websockets.client] < Upgrade: WebSocket
+[2025-11-17 03:21:56,025] [DEBUG   ] [websockets.client] < Sec-WebSocket-Accept: GAJUpdPQRKWoqF6c9UatLXrehjA=
+[2025-11-17 03:21:56,025] [DEBUG   ] [websockets.client] < X-Kong-Upstream-Latency: 3
+[2025-11-17 03:21:56,025] [DEBUG   ] [websockets.client] < X-Kong-Proxy-Latency: 1
+[2025-11-17 03:21:56,025] [DEBUG   ] [websockets.client] < Via: kong/3.3.0
+[2025-11-17 03:21:56,026] [DEBUG   ] [websockets.client] < cf-cache-status: DYNAMIC
+[2025-11-17 03:21:56,026] [DEBUG   ] [websockets.client] < Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=XTn920DrxIlGQX5XMYWgscKCOwvu4RZUsJeAH3IYIFXrUIh5XuH2a98EsnILc%2BGREivPKBipijMZvnxwKHoZX28qqqSEI3AxAKGvmgyG3pOhCjpZ39mQiUw8P5ipRPcIrg%3D%3D"}],"group":"cf-nel","max_age":604800}
+[2025-11-17 03:21:56,026] [DEBUG   ] [websockets.client] < NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+[2025-11-17 03:21:56,026] [DEBUG   ] [websockets.client] < Server: cloudflare
+[2025-11-17 03:21:56,026] [DEBUG   ] [websockets.client] < CF-RAY: 99fc19caac33ddd5-MIA
+[2025-11-17 03:21:56,027] [DEBUG   ] [websockets.client] < alt-svc: h3=":443"; ma=86400
+[2025-11-17 03:21:56,027] [DEBUG   ] [websockets.client] < server-timing: cfL4;desc="?proto=TCP&rtt=87767&min_rtt=87767&rtt_var=43883&sent=5&recv=7&lost=0&retrans=1&sent_bytes=4188&recv_bytes=885&delivery_rate=13237&cwnd=251&unsent_bytes=0&cid=2fba5542b1890965&ts=646&x=0"
+[2025-11-17 03:21:56,027] [DEBUG   ] [websockets.client] = connection is OPEN
+[2025-11-17 03:22:01,031] [DEBUG   ] [websockets.client] = connection is CLOSING
+[2025-11-17 03:22:01,032] [DEBUG   ] [websockets.client] > CLOSE 1000 (OK) [2 bytes]
+[2025-11-17 03:22:01,241] [DEBUG   ] [websockets.client] < CLOSE 1000 (OK) [2 bytes]
+[2025-11-17 03:22:01,245] [DEBUG   ] [websockets.client] = connection is CLOSED
+[2025-11-17 03:22:01,333] [DEBUG   ] [websockets.client] = connection is CONNECTING
+[2025-11-17 03:22:01,439] [DEBUG   ] [websockets.client] > GET /ws/v1/websocket HTTP/1.1
+[2025-11-17 03:22:01,440] [DEBUG   ] [websockets.client] > Host: login.leverex.io
+[2025-11-17 03:22:01,440] [DEBUG   ] [websockets.client] > Upgrade: websocket
+[2025-11-17 03:22:01,440] [DEBUG   ] [websockets.client] > Connection: Upgrade
+[2025-11-17 03:22:01,440] [DEBUG   ] [websockets.client] > Sec-WebSocket-Key: w6xs81ywBDK3AgZ1AZmBKA==
+[2025-11-17 03:22:01,441] [DEBUG   ] [websockets.client] > Sec-WebSocket-Version: 13
+[2025-11-17 03:22:01,441] [DEBUG   ] [websockets.client] > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+[2025-11-17 03:22:01,441] [DEBUG   ] [websockets.client] > User-Agent: Python/3.11 websockets/11.0.3
+[2025-11-17 03:22:01,949] [DEBUG   ] [websockets.client] < HTTP/1.1 101 Switching Protocols
+[2025-11-17 03:22:01,950] [DEBUG   ] [websockets.client] < Date: Mon, 17 Nov 2025 03:22:01 GMT
+[2025-11-17 03:22:01,950] [DEBUG   ] [websockets.client] < Connection: upgrade
+[2025-11-17 03:22:01,951] [DEBUG   ] [websockets.client] < Upgrade: websocket
+[2025-11-17 03:22:01,951] [DEBUG   ] [websockets.client] < Sec-Websocket-Accept: RGgkOBZE+sUkpI1ldlKeSCqezkI=
+[2025-11-17 03:22:01,951] [DEBUG   ] [websockets.client] < vary: Origin
+[2025-11-17 03:22:01,951] [DEBUG   ] [websockets.client] < Access-Control-Allow-Credentials: true
+[2025-11-17 03:22:01,951] [DEBUG   ] [websockets.client] < X-Kong-Upstream-Latency: 7
+[2025-11-17 03:22:01,952] [DEBUG   ] [websockets.client] < X-Kong-Proxy-Latency: 1
+[2025-11-17 03:22:01,952] [DEBUG   ] [websockets.client] < Via: kong/3.3.0
+[2025-11-17 03:22:01,952] [DEBUG   ] [websockets.client] < cf-cache-status: DYNAMIC
+[2025-11-17 03:22:01,953] [DEBUG   ] [websockets.client] < Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=RmuAXMLZu%2FRXAzdd8FDsnFI6I4SAucCCl09vLtW4brD4eUBT3gAFD5wV4WV9u7rW8e6M1RqDMnKXNltCCuIdw8sO7LOHeaAwkA4sukNs6jCLM6Srv0N%2BkRf1l5kLs8OLkZoz"}],"group":"cf-nel","max_age":604800}
+[2025-11-17 03:22:01,953] [DEBUG   ] [websockets.client] < NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+[2025-11-17 03:22:01,953] [DEBUG   ] [websockets.client] < Server: cloudflare
+[2025-11-17 03:22:01,953] [DEBUG   ] [websockets.client] < CF-RAY: 99fc19efab7f5d6c-MIA
+[2025-11-17 03:22:01,954] [DEBUG   ] [websockets.client] < alt-svc: h3=":443"; ma=86400
+[2025-11-17 03:22:01,954] [DEBUG   ] [websockets.client] < server-timing: cfL4;desc="?proto=TCP&rtt=83831&min_rtt=83688&rtt_var=31670&sent=4&recv=6&lost=0&retrans=0&sent_bytes=2823&recv_bytes=902&delivery_rate=34418&cwnd=251&unsent_bytes=0&cid=72e2f9a1b71896c4&ts=515&x=0"
+[2025-11-17 03:22:01,954] [DEBUG   ] [websockets.client] = connection is OPEN
+[2025-11-17 03:22:06,961] [DEBUG   ] [websockets.client] = connection is CLOSING
+[2025-11-17 03:22:06,961] [DEBUG   ] [websockets.client] > CLOSE 1000 (OK) [2 bytes]
+[2025-11-17 03:22:07,177] [DEBUG   ] [websockets.client] < CLOSE 1000 (OK) [2 bytes]
+[2025-11-17 03:22:07,180] [DEBUG   ] [websockets.client] = connection is CLOSED
+[2025-11-17 03:22:07,329] [DEBUG   ] [websockets.client] = connection is CONNECTING
+[2025-11-17 03:22:07,403] [DEBUG   ] [websockets.client] > GET /realtime HTTP/1.1
+[2025-11-17 03:22:07,404] [DEBUG   ] [websockets.client] > Host: www.bitmex.com
+[2025-11-17 03:22:07,404] [DEBUG   ] [websockets.client] > Upgrade: websocket
+[2025-11-17 03:22:07,404] [DEBUG   ] [websockets.client] > Connection: Upgrade
+[2025-11-17 03:22:07,404] [DEBUG   ] [websockets.client] > Sec-WebSocket-Key: j2dRG+7z5VOau5DiVCnbFg==
+[2025-11-17 03:22:07,405] [DEBUG   ] [websockets.client] > Sec-WebSocket-Version: 13
+[2025-11-17 03:22:07,405] [DEBUG   ] [websockets.client] > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+[2025-11-17 03:22:07,405] [DEBUG   ] [websockets.client] > User-Agent: Python/3.11 websockets/11.0.3
+[2025-11-17 03:22:08,174] [DEBUG   ] [websockets.client] < HTTP/1.1 101 Switching Protocols
+[2025-11-17 03:22:08,174] [DEBUG   ] [websockets.client] < Date: Mon, 17 Nov 2025 03:22:08 GMT
+[2025-11-17 03:22:08,175] [DEBUG   ] [websockets.client] < Connection: upgrade
+[2025-11-17 03:22:08,175] [DEBUG   ] [websockets.client] < upgrade: websocket
+[2025-11-17 03:22:08,175] [DEBUG   ] [websockets.client] < sec-websocket-accept: XC7NHOezoC/mbP7Rk5zmABpC9QU=
+[2025-11-17 03:22:08,176] [DEBUG   ] [websockets.client] < sec-websocket-extensions: permessage-deflate
+[2025-11-17 03:22:08,176] [DEBUG   ] [websockets.client] < cf-cache-status: DYNAMIC
+[2025-11-17 03:22:08,176] [DEBUG   ] [websockets.client] < Set-Cookie: __cf_bm=ZSCyvZojV6uOwAox4hu0r6FAaPupotd4sTayvKNKwPU-1763349728-1.0.1.1-fOtNlMKOYCa7X1mEYWGXc2l_ndH4aJUg67aqpJb4iRc4H6jdC._0a6O.hhAmoXJhscFkUEM2NjHlYpPMkkR8zoHeh7XuFDnU85j9bydlxTg; path=/; expires=Mon, 17-Nov-25 03:52:08 GMT; domain=.bitmex.com; HttpOnly; Secure; SameSite=None
+[2025-11-17 03:22:08,176] [DEBUG   ] [websockets.client] < Server: cloudflare
+[2025-11-17 03:22:08,177] [DEBUG   ] [websockets.client] < CF-RAY: 99fc1a14db1db6ec-BOG
+[2025-11-17 03:22:08,177] [DEBUG   ] [websockets.client] < alt-svc: h3=":443"; ma=86400
+[2025-11-17 03:22:08,178] [DEBUG   ] [websockets.client] = connection is OPEN
+[2025-11-17 03:22:08,178] [DEBUG   ] [websockets.client] > TEXT '{"op": "authKey", "args": ["HEaZlXVB7IRGgIqjOF_...323d0d0d12d651d6c4b6"]}' [135 bytes]
+[2025-11-17 03:22:08,179] [DEBUG   ] [websockets.client] < TEXT '{"info":"Welcome to the BitMEX Realtime API.","...dler-6f6b457b59-pzctx"}' [240 bytes]
+[2025-11-17 03:22:08,445] [DEBUG   ] [websockets.client] < TEXT '{"success":true,"request":{"op":"authKey","args...23d0d0d12d651d6c4b6"]}}' [157 bytes]
+[2025-11-17 03:22:08,445] [DEBUG   ] [websockets.client] > TEXT '{"op": "subscribe", "args": ["quote:XBTUSD"]}' [45 bytes]
+[2025-11-17 03:22:08,708] [DEBUG   ] [websockets.client] < TEXT '{"success":true,"subscribe":"quote:XBTUSD","req...rgs":["quote:XBTUSD"]}}' [96 bytes]
+[2025-11-17 03:22:08,709] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"partial","keys":[],"...12.5,"askSize":12200}]}' [337 bytes]
+[2025-11-17 03:22:08,725] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...12.5,"askSize":78500}]}' [173 bytes]
+[2025-11-17 03:22:08,744] [DEBUG   ] [websockets.client] < TEXT '{"table":"quote","action":"insert","data":[{"ti...12.5,"askSize":78500}]}' [173 bytes]
+[2025-11-17 03:22:08,810] [DEBUG   ] [websockets.client] = connection is CLOSING
+[2025-11-17 03:22:08,810] [DEBUG   ] [websockets.client] > CLOSE 1000 (OK) [2 bytes]
+[2025-11-17 03:22:09,073] [DEBUG   ] [websockets.client] < CLOSE 1000 (OK) [2 bytes]
+[2025-11-17 03:22:11,078] [DEBUG   ] [websockets.client] = connection is CLOSED

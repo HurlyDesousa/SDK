@@ -1,0 +1,6 @@
+﻿{
+    "email":  "toby@s-w.art",
+    "login_endpoint":  "wss://login.leverex.io/ws/v1/websocket",
+    "service_url":  "wss://api.leverex.io",
+    "api_endpoint":  "wss://api.leverex.io"
+}

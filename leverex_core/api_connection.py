@@ -660,5 +660,9 @@ class PublicApiConnection(object):
             announcements = update['chyrons']
             await self._call_listener_method('on_announcement', announcements)
 
+         elif 'trade_created' in update:
+            trade_data = update['trade_created']
+            await self._call_listener_method('on_trade_created', trade_data)
+
          else:
             logging.warning('!!! Ignore update\n{} !!!'.format(update))

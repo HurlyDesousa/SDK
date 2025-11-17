@@ -268,6 +268,17 @@ class LeverexProvider(Factory, LeverexBaseClient):
 
       #leverex leverage is locked at 10x
       self.setLeverage(10)
+      
+      # Store all trades from public feed (all users)
+      self.all_trades = []  # List to store all trade_created events
+      self.public_connection = None
+      self.offers = None  # Store dealer offers for order book
+      
+      # Setup public connection if public_endpoint is configured
+      if 'public_endpoint' in self.config.get('leverex', {}):
+         from leverex_core.api_connection import PublicApiConnection
+         self.public_connection = PublicApiConnection(
+            self.config['leverex']['public_endpoint'])
 
    ##
    def setup(self, callback):
@@ -276,7 +287,12 @@ class LeverexProvider(Factory, LeverexBaseClient):
 
    ##
    def getAsyncIOTask(self):
-      return asyncio.create_task(self.connection.run(self))
+      async def run_all():
+         tasks = [asyncio.create_task(self.connection.run(self))]
+         if self.public_connection:
+            tasks.append(asyncio.create_task(self.public_connection.run(self)))
+         await asyncio.gather(*tasks)
+      return asyncio.create_task(run_all())
 
    #############################################################################
    #### withdrawals
@@ -329,6 +345,14 @@ class LeverexProvider(Factory, LeverexBaseClient):
    async def on_authorized(self):
       await Factory.setConnected(self, True)
       await self.subscribeToProductData()
+      
+      # Subscribe to dealer offers for order book
+      await self.connection.subscribe_dealer_offers(self.product)
+      
+      # Subscribe to public feed for all trades
+      if self.public_connection:
+         await self.public_connection.subscribe_to_product(self.product)
+         await self.public_connection.subscribe_dealer_offers(self.product)
 
    ## balance events ##
    async def on_balance_update(self, balances):
@@ -367,6 +391,34 @@ class LeverexProvider(Factory, LeverexBaseClient):
    async def on_deposit_update(self, deposit_info):
       TheTxTracker.addDeposit(deposit_info)
       self.onTransactionEvent()
+   
+   ## dealer offers (order book) ##
+   async def on_dealer_offers(self, offers):
+      """Handle dealer offers for order book display"""
+      self.offers = offers
+      logging.debug(f"[Leverex] Received dealer offers: {len(offers.bids)} bids, {len(offers.asks)} asks")
+   
+   ## public trade feed ##
+   def on_public_connected(self):
+      pass
+   
+   async def on_trade_created(self, trade_data):
+      """Handle trade_created events from public feed (all users)"""
+      import time
+      trade_entry = {
+         'id': trade_data.get('id', ''),
+         'amount': float(trade_data.get('amount', 0)),
+         'price': float(trade_data.get('price', 0)),
+         'timestamp': int(time.time()),
+         'is_public': True  # Mark as public trade (all users)
+      }
+      
+      # Add to list (keep last 1000 trades)
+      self.all_trades.append(trade_entry)
+      if len(self.all_trades) > 1000:
+         self.all_trades.pop(0)
+      
+      logging.info(f"[Leverex] Trade created (all users): ID={trade_entry['id']}, Amount={trade_entry['amount']}, Price={trade_entry['price']}")
 
    #############################################################################
    #### methods

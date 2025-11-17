@@ -5,3 +5,5 @@ dealer.release/
 dealer.debug/
 build_dealer/
 *.pem
+dealer_config.json
+key.pem

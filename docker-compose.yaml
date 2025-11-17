@@ -1,12 +1,20 @@
-version: "3"
 services:
-  bitfinix-dealer:
+  leverex-dealer:
     build:
       dockerfile: Dockerfile
       context: .
+    container_name: leverex-dealer-staging
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./dealer_config.json:/app/config.json:ro
+      - ./key.pem:/app/key.pem:ro
     networks:
-      - staging-network 
+      - staging-network
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
 
 networks:
   staging-network:
-    external: true
+    driver: bridge
