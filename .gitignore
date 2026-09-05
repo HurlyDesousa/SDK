@@ -7,3 +7,14 @@ build_dealer/
 *.pem
 dealer_config.json
 key.pem
+
+# Logs (may contain API keys, signatures, auth material)
+*.log
+api_debug.log
+dealer_debug.log
+
+# Local secrets and runtime config
+.env
+.env.*
+config.local.json
+**/config.local.json

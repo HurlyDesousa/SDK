@@ -3,8 +3,16 @@
 Check Leverex connection status via web interface API
 """
 import json
+import os
 import requests
 import sys
+
+def _api_headers():
+    headers = {}
+    token = os.environ.get('DEALER_API_TOKEN', '').strip()
+    if token:
+        headers['Authorization'] = f'Bearer {token}'
+    return headers
 
 def check_leverex_status():
     """Check Leverex status from web interface"""
@@ -18,7 +26,7 @@ def check_leverex_status():
         print(f"\n📡 Connecting to web interface: {url}")
         
         try:
-            response = requests.get(url, timeout=5)
+            response = requests.get(url, headers=_api_headers(), timeout=5)
             if response.status_code == 200:
                 data = response.json()
                 
