@@ -546,6 +546,16 @@
     </div>
     
         <script>
+        const DEALER_API_TOKEN = {{ api_token|tojson }};
+
+        function apiFetchOptions(extraOptions = {}) {
+            const headers = { ...(extraOptions.headers || {}) };
+            if (DEALER_API_TOKEN) {
+                headers['Authorization'] = `Bearer ${DEALER_API_TOKEN}`;
+            }
+            return { ...extraOptions, headers };
+        }
+
         // Leverex Trade History Functions
         function formatTimestamp(timestamp) {
             if (!timestamp || timestamp === 0) return '--';
@@ -622,7 +632,7 @@
         
         async function fetchTradeHistory() {
             try {
-                const response = await fetch('/api/trade-history');
+                const response = await fetch('/api/trade-history', apiFetchOptions());
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -747,13 +757,13 @@
             btn.disabled = true;
             
             try {
-                const response = await fetch('/api/control', {
+                const response = await fetch('/api/control', apiFetchOptions({
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({ action: action })
-                });
+                }));
                 
                 const data = await response.json();
                 
@@ -784,7 +794,7 @@
         
         async function fetchControlStatus() {
             try {
-                const response = await fetch('/api/control/status');
+                const response = await fetch('/api/control/status', apiFetchOptions());
                 if (response.ok) {
                     const data = await response.json();
                     const btn = document.getElementById('dealer-control-btn');
@@ -818,7 +828,7 @@
         
         async function fetchStatus() {
             try {
-                const response = await fetch('/api/status');
+                const response = await fetch('/api/status', apiFetchOptions());
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -929,7 +939,7 @@
         
         async function fetchPositions() {
             try {
-                const response = await fetch('/api/positions');
+                const response = await fetch('/api/positions', apiFetchOptions());
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }

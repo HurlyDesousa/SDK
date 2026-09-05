@@ -55,3 +55,13 @@
    - Generate and register a new key for the account `my*account@mail.com` in the `dev` environment.
    - Store the generated key in the `dev/api_key_1/key.pem` file.
 
+## Web interface security
+
+The dealer web UI listens on `127.0.0.1` by default. Do **not** expose port 5000 publicly in production; use a reverse proxy with TLS if remote access is required.
+
+All `/api/*` endpoints require a shared secret via the `DEALER_API_TOKEN` environment variable. Clients must send `Authorization: Bearer <token>` (or `X-Dealer-Api-Token`). If `DEALER_API_TOKEN` is unset, API requests are rejected unless `DEALER_DEV_MODE=true` (local development only).
+
+For Docker, `docker-compose.yaml` binds the host port as `127.0.0.1:5000:5000` and sets `DEALER_BIND_HOST=0.0.0.0` inside the container.
+
+Optional: set `DEALER_CORS_ORIGINS` to a comma-separated allowlist if cross-origin API access is needed (default: same-origin only).
+

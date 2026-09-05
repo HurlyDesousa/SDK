@@ -5,7 +5,7 @@ services:
       context: .
     container_name: leverex-dealer-staging
     ports:
-      - "5000:5000"
+      - "127.0.0.1:5000:5000"
     volumes:
       - ./dealer_config.json:/app/config.json:ro
       - ./key.pem:/app/key.pem:ro
@@ -14,6 +14,10 @@ services:
     restart: unless-stopped
     environment:
       - PYTHONUNBUFFERED=1
+      # Listen on all interfaces inside the container; host binding is restricted above.
+      - DEALER_BIND_HOST=0.0.0.0
+      # Required for /api/* access (set in .env or shell before docker compose up)
+      - DEALER_API_TOKEN=${DEALER_API_TOKEN:-}
 
 networks:
   staging-network:

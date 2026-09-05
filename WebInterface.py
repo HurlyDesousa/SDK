@@ -1,4 +1,5 @@
 import logging
+import os
 import threading
 import json
 from flask import Flask, render_template, jsonify, request
@@ -9,18 +10,58 @@ class WebInterface:
         self.dealer = dealer
         self.port = port
         self.app = Flask(__name__, template_folder='templates', static_folder='static', static_url_path='/static')
-        CORS(self.app)
+
+        self.api_token = os.environ.get('DEALER_API_TOKEN', '').strip()
+        self.dev_mode = os.environ.get('DEALER_DEV_MODE', '').lower() in ('1', 'true', 'yes')
+        self.bind_host = os.environ.get('DEALER_BIND_HOST', '127.0.0.1')
+
+        cors_origins = [
+            origin.strip()
+            for origin in os.environ.get('DEALER_CORS_ORIGINS', '').split(',')
+            if origin.strip()
+        ]
+        if cors_origins:
+            CORS(self.app, origins=cors_origins)
+
         self.server_thread = None
         # Check if dealer is stopped by default (stop flag file exists)
-        import os
         stop_flag_file = '/app/.dealer_stop'
         self.dealer_running = not os.path.exists(stop_flag_file)  # Track dealer running state
         self._setup_routes()
+        self._setup_api_auth()
         
+    def _api_auth_required(self):
+        if self.dev_mode and not self.api_token:
+            return False
+        return bool(self.api_token)
+
+    def _setup_api_auth(self):
+        @self.app.before_request
+        def require_api_auth():
+            if not request.path.startswith('/api/'):
+                return None
+            if not self._api_auth_required():
+                logging.error("DEALER_API_TOKEN is not set; rejecting /api request (set DEALER_DEV_MODE=true for local dev)")
+                return jsonify({'error': 'API authentication is not configured'}), 503
+            auth_header = request.headers.get('Authorization', '')
+            if auth_header.startswith('Bearer '):
+                token = auth_header[7:].strip()
+            else:
+                token = request.headers.get('X-Dealer-Api-Token', '').strip()
+            if token != self.api_token:
+                return jsonify({'error': 'Unauthorized'}), 401
+            return None
+
     def _setup_routes(self):
         @self.app.route('/')
         def index():
-            return render_template('dealer_interface.html')
+            # Token is injected for same-origin UI only; /api/* still requires Bearer header.
+            return render_template('dealer_interface.html', api_token=self.api_token)
+
+        @self.app.route('/api/')
+        @self.app.route('/api')
+        def api_index():
+            return jsonify({'error': 'Not found'}), 404
         
         @self.app.route('/api/status')
         def get_status():
@@ -374,11 +415,16 @@ class WebInterface:
     def start(self):
         """Start the web server in a separate thread"""
         def run_server():
-            self.app.run(host='0.0.0.0', port=self.port, debug=False, use_reloader=False)
-        
+            self.app.run(host=self.bind_host, port=self.port, debug=False, use_reloader=False)
+
         self.server_thread = threading.Thread(target=run_server, daemon=True)
         self.server_thread.start()
-        logging.info(f"Web interface started on http://localhost:{self.port}")
+        if self.bind_host not in ('127.0.0.1', 'localhost'):
+            logging.warning(
+                f"Web interface listening on {self.bind_host}:{self.port}; "
+                "do not expose port 5000 publicly without a reverse proxy and TLS"
+            )
+        logging.info(f"Web interface started on http://{self.bind_host}:{self.port}")
     
     def stop(self):
         """Stop the web server"""

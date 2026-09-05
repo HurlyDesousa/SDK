@@ -1,0 +1,27 @@
+# Secrets and local config (mount at runtime instead)
+*.pem
+key.pem
+dealer_config.json
+config.local.json
+.env
+.env.*
+
+# Debug logs (may contain API keys and signatures)
+*.log
+api_debug.log
+dealer_debug.log
+
+# Git and Python artifacts
+.git
+.gitignore
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+
+# Local/dev-only paths
+live/
+uat/
+dealer.release/
+dealer.debug/
+build_dealer/

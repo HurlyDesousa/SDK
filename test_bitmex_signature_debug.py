@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 """
-Debug BitMEX signature generation - test different formats
+Debug BitMEX signature generation - test different formats.
+
+Credentials must be supplied via environment variables; never commit real keys.
 """
 import hmac
 import hashlib
+import os
 import time
 
-api_key = "HEaZlXVB7IRGgIqjOF_RFdDK"
-api_secret = "UiyOCdQIjvSdPg9atmr4aJUJAhufUW1L3h6BeLLYcBt3zYn8"
+api_key = os.environ.get("BITMEX_API_KEY", "YOUR_BITMEX_API_KEY")
+api_secret = os.environ.get("BITMEX_API_SECRET", "YOUR_BITMEX_API_SECRET")
 
 path = '/user'
 verb = 'GET'
@@ -33,4 +36,3 @@ for name, message in formats:
     print(f"  Message: {message}")
     print(f"  Signature: {signature}")
     print()
-
